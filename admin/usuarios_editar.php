@@ -19,7 +19,11 @@ if(empty($id)) {
 }
 
 // Buscar usuário
+<<<<<<< HEAD
 $sql = "SELECT * FROM usuarios WHERE id = $id";
+=======
+$sql = "SELECT * FROM clientes WHERE id = $id";
+>>>>>>> b8b74a4c73e4d7076b9416ec179cf809cc78a0fb
 $result = mysqli_query($conn, $sql);
 
 if(!$result || mysqli_num_rows($result) == 0) {
@@ -43,7 +47,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         $erro = 'Por favor, insira um email válido!';
     } else {
         // Verificar se o email já existe (para outro usuário)
+<<<<<<< HEAD
         $sql_check = "SELECT id FROM usuarios WHERE email = '$email' AND id != $id";
+=======
+        $sql_check = "SELECT id FROM clientes WHERE email = '$email' AND id != $id";
+>>>>>>> b8b74a4c73e4d7076b9416ec179cf809cc78a0fb
         $result_check = mysqli_query($conn, $sql_check);
         
         if(mysqli_num_rows($result_check) > 0) {
@@ -55,18 +63,30 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $erro = 'A senha deve ter pelo menos 6 caracteres!';
                 } else {
                     $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
+<<<<<<< HEAD
                     $sql_update = "UPDATE usuarios SET nome = '$nome', email = '$email', senha = '$senha_hash' WHERE id = $id";
                 }
             } else {
                 // Atualizar sem alterar a senha
                 $sql_update = "UPDATE usuarios SET nome = '$nome', email = '$email' WHERE id = $id";
+=======
+                    $sql_update = "UPDATE clientes SET nome = '$nome', email = '$email', senha = '$senha_hash' WHERE id = $id";
+                }
+            } else {
+                // Atualizar sem alterar a senha
+                $sql_update = "UPDATE clientes SET nome = '$nome', email = '$email' WHERE id = $id";
+>>>>>>> b8b74a4c73e4d7076b9416ec179cf809cc78a0fb
             }
 
             if(empty($erro) && mysqli_query($conn, $sql_update)) {
                 include '../config/backup.php';
                 $sucesso = 'Usuário atualizado com sucesso!';
                 // Recarregar os dados
+<<<<<<< HEAD
                 $sql = "SELECT * FROM usuarios WHERE id = $id";
+=======
+                $sql = "SELECT * FROM clientes WHERE id = $id";
+>>>>>>> b8b74a4c73e4d7076b9416ec179cf809cc78a0fb
                 $result = mysqli_query($conn, $sql);
                 $usuario = mysqli_fetch_assoc($result);
             } else {

@@ -31,7 +31,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         $erro = 'As senhas não conferem!';
     } else {
         // Verificar se o email já existe
+<<<<<<< HEAD
         $sql_check = "SELECT id FROM usuarios WHERE email = '$email'";
+=======
+        $sql_check = "SELECT id FROM clientes WHERE email = '$email'";
+>>>>>>> b8b74a4c73e4d7076b9416ec179cf809cc78a0fb
         $result_check = mysqli_query($conn, $sql_check);
         
         if(mysqli_num_rows($result_check) > 0) {
@@ -41,7 +45,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
             $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
             
             // Inserir novo usuário
+<<<<<<< HEAD
             $sql = "INSERT INTO usuarios (nome, email, senha) VALUES ('$nome', '$email', '$senha_hash')";
+=======
+            $sql = "INSERT INTO clientes (nome, email, senha) VALUES ('$nome', '$email', '$senha_hash')";
+>>>>>>> b8b74a4c73e4d7076b9416ec179cf809cc78a0fb
             
             if(mysqli_query($conn, $sql)) {
                 include '../config/backup.php';
