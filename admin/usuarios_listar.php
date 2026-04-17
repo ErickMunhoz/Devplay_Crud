@@ -9,11 +9,7 @@ if (!isset($_SESSION['admin_logado']) || $_SESSION['admin_logado'] !== true) {
 
 include '../config/conexao.php';
 
-<<<<<<< HEAD
 $sql = "SELECT * FROM usuarios ORDER BY data_cadastro DESC";
-=======
-$sql = "SELECT * FROM clientes ORDER BY data_cadastro DESC";
->>>>>>> b8b74a4c73e4d7076b9416ec179cf809cc78a0fb
 $result = mysqli_query($conn, $sql);
 ?>
 <!DOCTYPE html>

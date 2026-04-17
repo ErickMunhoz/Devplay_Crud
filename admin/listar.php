@@ -115,7 +115,8 @@ $result = mysqli_query($conn, $sql);
             <div class="header-content">
                 <div class="logo-section">
                     <a href="../index.php" class="logo-link">
-                        <div class="logo">🎮</div>
+                        <div class="logo"><img src="../imagem/logo.png" alt="logo" width="40px" height="40px">
+ </div>
                     </a>
                     <h1 class="site-title">DevPlay Admin</h1>
                 </div>

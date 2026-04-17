@@ -2,7 +2,6 @@
 session_start();
 include 'config/conexao.php';
 ?>
-/* testando o teste*/
 <!DOCTYPE html>
 <!-- Declaração do tipo de documento HTML5 - sempre deve ser a primeira linha -->
 <html lang="pt-BR">
@@ -31,8 +30,7 @@ include 'config/conexao.php';
     <meta name="author" content="Alunos do Curso de Desenvolvimento de Sistemas">
 
     <!-- Favicon - ícone que aparece na aba do navegador (usando emoji como ícone) -->
-    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
-
+    <link rel="icon" href="/imagem/DEV-PLAY-LOGO-Aline.svg">
     <!-- Título que aparece na aba do navegador -->
     <title>DevPlay - Plataforma de Jogos para Treinar Programação</title>
 
@@ -58,7 +56,8 @@ include 'config/conexao.php';
                 <div class="logo-section">
                     <!-- Logo usando emoji (funciona em todos os dispositivos) -->
                     <a href="index.php" class="logo-link" aria-label="Voltar à página inicial">
-                        <div class="logo" aria-label="DevPlay Logo">🎮</div>
+                        <div class="logo" aria-label="DevPlay Logo"><img src="imagem/DEV-PLAY-LOGO-Final-correto.svg" alt="logo" width="40px" height="40px">
+ </div>
                     </a>
                     <!-- Título principal do site -->
                     <h1 class="site-title">DevPlay</h1>
