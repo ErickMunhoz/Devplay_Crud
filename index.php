@@ -2,7 +2,6 @@
 session_start();
 include 'config/conexao.php';
 ?>
-/* testando o teste*/
 <!DOCTYPE html>
 <!-- Declaração do tipo de documento HTML5 - sempre deve ser a primeira linha -->
 <html lang="pt-BR">
