@@ -1,6 +1,7 @@
 <?php
 session_start();
 include 'config/conexao.php';
+/** @var mysqli $conn */
 ?>
 <!DOCTYPE html>
 <!-- Declaração do tipo de documento HTML5 - sempre deve ser a primeira linha -->
@@ -44,79 +45,7 @@ include 'config/conexao.php';
 <body>
     <!-- Corpo da página onde fica todo o conteúdo visível -->
 
-    <!-- CABEÇALHO FIXO DA PÁGINA -->
-    <!-- role="banner" ajuda leitores de tela a identificar o cabeçalho principal -->
-    <header class="header" role="banner">
-        <!-- Container centraliza o conteúdo e limita a largura máxima -->
-        <div class="container">
-            <!-- Flexbox para organizar logo e navegação lado a lado -->
-            <div class="header-content">
-
-                <!-- SEÇÃO DO LOGO E NOME -->
-                <div class="logo-section">
-                    <!-- Logo usando emoji (funciona em todos os dispositivos) -->
-                    <a href="index.php" class="logo-link" aria-label="Voltar à página inicial">
-                        <div class="logo" aria-label="DevPlay Logo"><img src="imagem/DEV-PLAY-LOGO-Final-correto.svg" alt="logo" width="40px" height="40px">
- </div>
-                    </a>
-                    <!-- Título principal do site -->
-                    <h1 class="site-title">DevPlay</h1>
-                    <!-- Subtítulo explicativo -->
-                    <span class="site-subtitle">Plataforma de Jogos para Treinar Programação</span>
-                </div>
-
-                <!-- MENU DE NAVEGAÇÃO -->
-                <!-- role="navigation" e aria-label ajudam na acessibilidade -->
-                <nav class="nav" role="navigation" aria-label="Navegação principal">
-                    <!-- Botão hambúrguer para menu mobile -->
-                    <!-- aria-expanded informa se o menu está aberto ou fechado -->
-                    <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
-                        <!-- Ícone hambúrguer feito com CSS -->
-                        <span class="hamburger"></span>
-                    </button>
-
-                    <!-- Lista de links de navegação -->
-                    <ul class="nav-menu">
-                        <!-- Links para seções da página usando âncoras (#) -->
-                        <li><a href="#jogos" class="nav-link">Jogos</a></li>
-                        <li><a href="#sobre" class="nav-link">Sobre</a></li>
-                        <li><a href="admin/listar.php" class="nav-link">Gerenciar</a></li>
-                        <li>                       
-
-                            <button class="notification-button" id="notificationButton" aria-label="Ver notificações">
-                                <span class="notification-button-content">
-                                    🔔<span class="notification-badge" id="notificationBadge">0</span>
-                                </span>
-                            </button>
-                        </li>
-                        <!-- BOTÃO DE ALTERNÂNCIA DO TEMA (Claro/Escuro) -->
-                        <li>
-                            <button class="theme-toggle" aria-label="Alternar para modo claro ou escuro">
-                                <!-- Mostramos apenas a lua no modo claro (CSS esconde o outro) -->
-                                <span class="icon-moon" aria-hidden="true">🌙</span>
-                                <!-- Mostramos apenas o sol no modo escuro (CSS esconde o outro) -->
-                                <span class="icon-sun" aria-hidden="true">☀️</span>
-                            </button>
-                        </li>
-                        <?php if(isset($_SESSION['usuario_logado']) || isset($_SESSION['admin_logado'])): ?>
-                            <li class="nav-user-greeting" style="display: flex; align-items: center; justify-content: center; padding: 0 10px;">
-                                <span style="color: var(--primary); font-weight: bold;">
-                                    👤 Olá, <?php echo isset($_SESSION['nome_usuario']) ? htmlspecialchars(explode(' ', trim($_SESSION['nome_usuario']))[0]) : (isset($_SESSION['usuario_admin']) ? htmlspecialchars($_SESSION['usuario_admin']) : 'Usuário'); ?>
-                                </span>
-                            </li>
-                            <li>
-                                <a href="logout.php" class="nav-link" style="color: #ef4444; font-weight: bold;">Sair</a>
-                            </li>
-                        <?php else: ?>
-                            <li>
-                                <a href="login.php" class="nav-link" style="color: #10b981; font-weight: bold;">Entrar</a>
-                            </li>
-                        <?php endif; ?>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-    </header>
+    <?php include 'components/header.php'; ?>
 
 
     <!-- CONTEÚDO PRINCIPAL DA PÁGINA -->

@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         require_once 'config/conexao.php';
         
         $email_safe = mysqli_real_escape_string($conn, $email);
-        $sql = "SELECT id, nome, email, senha FROM clientes WHERE email = '$email_safe'";
+        $sql = "SELECT id, nome, email, senha FROM usuarios WHERE email = '$email_safe'";
         $result = mysqli_query($conn, $sql);
 
         if ($result && mysqli_num_rows($result) > 0) {

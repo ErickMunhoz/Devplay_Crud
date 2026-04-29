@@ -62,11 +62,11 @@ if ($result && mysqli_num_rows($result) > 0) {
 }
 
 // ----------------------------------------------------
-// BACKUP DA TABELA CLIENTES (USUÁRIOS)
+// BACKUP DA TABELA USUÁRIOS
 // ----------------------------------------------------
-$sqlDump .= "DROP TABLE IF EXISTS clientes;\n\n";
+$sqlDump .= "DROP TABLE IF EXISTS usuarios;\n\n";
 
-$sqlDump .= "CREATE TABLE IF NOT EXISTS clientes (\n";
+$sqlDump .= "CREATE TABLE IF NOT EXISTS usuarios (\n";
 $sqlDump .= "    id INT AUTO_INCREMENT PRIMARY KEY,\n";
 $sqlDump .= "    nome VARCHAR(255) NOT NULL,\n";
 $sqlDump .= "    email VARCHAR(255) NOT NULL UNIQUE,\n";
@@ -74,23 +74,23 @@ $sqlDump .= "    senha VARCHAR(255) NOT NULL,\n";
 $sqlDump .= "    data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP\n";
 $sqlDump .= ");\n\n";
 
-$resultClientes = mysqli_query($conn, "SELECT * FROM clientes");
+$resultUsuarios = mysqli_query($conn, "SELECT * FROM usuarios");
 
-if ($resultClientes && mysqli_num_rows($resultClientes) > 0) {
-    $sqlDump .= "INSERT INTO clientes (id, nome, email, senha, data_cadastro) VALUES \n";
+if ($resultUsuarios && mysqli_num_rows($resultUsuarios) > 0) {
+    $sqlDump .= "INSERT INTO usuarios (id, nome, email, senha, data_cadastro) VALUES \n";
 
-    $rowsClientes = [];
-    while ($rowC = mysqli_fetch_assoc($resultClientes)) {
-        $idC = $rowC['id'];
-        $nomeC = mysqli_real_escape_string($conn, $rowC['nome']);
-        $emailC = mysqli_real_escape_string($conn, $rowC['email']);
-        $senhaC = mysqli_real_escape_string($conn, $rowC['senha']);
-        $dataCadastroC = mysqli_real_escape_string($conn, $rowC['data_cadastro']);
+    $rowsUsuarios = [];
+    while ($rowU = mysqli_fetch_assoc($resultUsuarios)) {
+        $idU = $rowU['id'];
+        $nomeU = mysqli_real_escape_string($conn, $rowU['nome']);
+        $emailU = mysqli_real_escape_string($conn, $rowU['email']);
+        $senhaU = mysqli_real_escape_string($conn, $rowU['senha']);
+        $dataCadastroU = mysqli_real_escape_string($conn, $rowU['data_cadastro']);
 
-        $rowsClientes[] = "($idC, '$nomeC', '$emailC', '$senhaC', '$dataCadastroC')";
+        $rowsUsuarios[] = "($idU, '$nomeU', '$emailU', '$senhaU', '$dataCadastroU')";
     }
 
-    $sqlDump .= implode(",\n", $rowsClientes) . ";\n\n";
+    $sqlDump .= implode(",\n", $rowsUsuarios) . ";\n\n";
 }
 
 // 3. Salva todo o texto gerado dentro do arquivo backup_data.sql

@@ -8,6 +8,7 @@ if (!isset($_SESSION['admin_logado']) || $_SESSION['admin_logado'] !== true) {
 }
 
 include '../config/conexao.php';
+/** @var mysqli $conn */
 
 $erro = '';
 $sucesso = '';
@@ -31,11 +32,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         $erro = 'As senhas não conferem!';
     } else {
         // Verificar se o email já existe
-<<<<<<< HEAD
         $sql_check = "SELECT id FROM usuarios WHERE email = '$email'";
-=======
-        $sql_check = "SELECT id FROM clientes WHERE email = '$email'";
->>>>>>> b8b74a4c73e4d7076b9416ec179cf809cc78a0fb
         $result_check = mysqli_query($conn, $sql_check);
         
         if(mysqli_num_rows($result_check) > 0) {
@@ -45,11 +42,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
             $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
             
             // Inserir novo usuário
-<<<<<<< HEAD
             $sql = "INSERT INTO usuarios (nome, email, senha) VALUES ('$nome', '$email', '$senha_hash')";
-=======
-            $sql = "INSERT INTO clientes (nome, email, senha) VALUES ('$nome', '$email', '$senha_hash')";
->>>>>>> b8b74a4c73e4d7076b9416ec179cf809cc78a0fb
             
             if(mysqli_query($conn, $sql)) {
                 include '../config/backup.php';
@@ -178,37 +171,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     </style>
 </head>
 <body>
-    <header class="header">
-        <div class="container">
-            <div class="header-content">
-                <div class="logo-section">
-                    <a href="../index.php" class="logo-link">
-                        <div class="logo">🎮</div>
-                    </a>
-                    <h1 class="site-title">DevPlay Admin</h1>
-                </div>
-                <nav class="nav">
-                    <ul class="nav-menu active" style="position: static; display: flex; opacity: 1; visibility: visible; transform: none; box-shadow: none; border: none; background: none; align-items: center; margin: 0; padding: 0;">
-                        <li><a href="usuarios_listar.php" class="nav-link">Voltar</a></li>
-                        <li>
-                            <button class="theme-toggle" aria-label="Alternar para modo claro ou escuro">
-                                <span class="icon-moon" aria-hidden="true">🌙</span>
-                                <span class="icon-sun" aria-hidden="true">☀️</span>
-                            </button>
-                        </li>
-                        <li class="nav-user-greeting" style="display: flex; align-items: center; justify-content: center; padding: 0 10px;">
-                            <span style="color: var(--primary); font-weight: bold;">
-                                👤 Olá, <?php echo isset($_SESSION['nome_usuario']) ? htmlspecialchars(explode(' ', trim($_SESSION['nome_usuario']))[0]) : (isset($_SESSION['usuario_admin']) ? htmlspecialchars($_SESSION['usuario_admin']) : 'Usuário'); ?>
-                            </span>
-                        </li>
-                        <li>
-                            <a href="../logout.php" class="nav-link" style="color: #ef4444; font-weight: bold;">Sair</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-    </header>
+    <?php include '../components/header.php'; ?>
 
     <main class="admin-container container">
         <div class="form-container">
